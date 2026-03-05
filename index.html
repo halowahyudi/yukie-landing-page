@@ -357,16 +357,23 @@
 
       .invite-dropdown {
         position: absolute;
-        top: calc(100% + 8px);
+        top: 100%;
         left: 0;
         background: var(--bg3);
         border: 1px solid var(--card-border);
         border-radius: 10px;
-        overflow: hidden;
         min-width: 220px;
         display: none;
         z-index: 50;
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+        /* padding-top menciptakan area hover tak terlihat antara button & menu */
+        padding-top: 10px;
+      }
+
+      /* Clip visual border-radius tapi bukan area hover */
+      .invite-dropdown-inner {
+        overflow: hidden;
+        border-radius: 10px;
       }
 
       .invite-wrapper:hover .invite-dropdown,
@@ -895,14 +902,16 @@
             <span style="font-size: 0.7em; opacity: 0.7">▾</span>
           </button>
           <div class="invite-dropdown" id="invite-dropdown">
-            <a id="bot1-link" href="#">
-              🎵 Bot #1 — Utama
-              <span class="bot-num">BOT 1</span>
-            </a>
-            <a id="bot2-link" href="#">
-              🎵 Bot #2 — Backup
-              <span class="bot-num">BOT 2</span>
-            </a>
+            <div class="invite-dropdown-inner">
+              <a id="bot1-link" href="#">
+                🎵 Bot #1 — Utama
+                <span class="bot-num">BOT 1</span>
+              </a>
+              <a id="bot2-link" href="#">
+                🎵 Bot #2 — Backup
+                <span class="bot-num">BOT 2</span>
+              </a>
+            </div>
           </div>
         </div>
         <a href="#fitur" class="btn btn-secondary">Lihat Fitur ↓</a>
