@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yukie Music — Music Bot Discord</title>
+    <title>Yukie Bot — Music Bot Discord</title>
     <meta
       name="description"
       content="Bot musik Discord terbaik dengan integrasi Spotify & YouTube. Queue unlimited, audio filters, dan lebih banyak fitur premium."
@@ -12,7 +12,7 @@
     <!-- ── Edit konfigurasi di sini ── -->
     <script>
       const CONFIG = {
-        BOT_NAME: "Yukie Music",
+        BOT_NAME: "Yukie Bot",
         BOT_TAGLINE: "Bot Musik Discord",
         BOT_DESCRIPTION:
           "Putar musik dari Spotify & YouTube langsung di server Discord kamu. Gratis, cepat, dan penuh fitur.",
@@ -870,14 +870,14 @@
   <body>
     <!-- ── NAV ──────────────────────────────────────────────────────────── -->
     <nav>
-      <a class="nav-logo" href="#" id="nav-logo">YUKIE MUSIK</a>
+      <a class="nav-logo" href="#" id="nav-logo">YUKIE BOT</a>
       <ul class="nav-links">
         <li><a href="#fitur">Fitur</a></li>
         <li><a href="#command">Commands</a></li>
         <li><a href="#premium">Premium</a></li>
         <li><a href="#links">Links</a></li>
         <li>
-          <a href="#invite" class="nav-cta btn">+ Invite Bot</a>
+          <a href="#home" class="nav-cta btn" id="nav-invite">+ Invite Bot</a>
         </li>
       </ul>
     </nav>
@@ -1092,9 +1092,9 @@
 
     <!-- ── FOOTER ────────────────────────────────────────────────────────── -->
     <footer>
-      <span class="footer-logo" id="footer-logo">YUKIE MUSIK</span>
+      <span class="footer-logo" id="footer-logo">YUKIE BOT</span>
       <span class="footer-copy" id="footer-copy"
-        >© 2025 Yukie Music — Bot Musik Discord</span
+        >© 2025 Yukie Bot — Bot Musik Discord</span
       >
       <div class="footer-links">
         <a id="footer-support" href="#">Support</a>
@@ -1104,184 +1104,188 @@
     </footer>
 
     <script>
-      // ── Apply config ──────────────────────────────────────────────────────────
-      const C = CONFIG;
+      document.addEventListener("DOMContentLoaded", () => {
+        // ── Apply config ──────────────────────────────────────────────────────────
+        const C = CONFIG;
 
-      // Nav logo
-      document.getElementById("nav-logo").textContent =
-        C.BOT_NAME.toUpperCase().replace(" ", " ");
+        // Nav logo
+        document.getElementById("nav-logo").textContent =
+          C.BOT_NAME.toUpperCase().replace(" ", " ");
 
-      // Hero
-      document.getElementById("hero-title").innerHTML =
-        C.BOT_NAME.toUpperCase().replace(/\s/, "<br/><span>") + "</span>";
+        // Hero
+        document.getElementById("hero-title").innerHTML =
+          C.BOT_NAME.toUpperCase().replace(/\s/, "<br/><span>") + "</span>";
 
-      document.getElementById("hero-sub").textContent = C.BOT_DESCRIPTION;
+        document.getElementById("hero-sub").textContent = C.BOT_DESCRIPTION;
 
-      // Invite links
-      document.getElementById("bot1-link").href = C.BOT_1_INVITE;
-      document.getElementById("bot2-link").href = C.BOT_2_INVITE;
-      document.getElementById("support-link").href = C.SUPPORT_URL;
+        // Invite links
+        document.getElementById("bot1-link").href = C.BOT_1_INVITE;
+        document.getElementById("bot2-link").href = C.BOT_2_INVITE;
+        document.getElementById("support-link").href = C.SUPPORT_URL;
 
-      // Cmd desc
-      document.getElementById("cmd-desc").innerHTML =
-        `Prefix default: <code style="font-family:'DM Mono',monospace;color:var(--green);font-size:0.85em">${C.PREFIX}</code>`;
+        // Cmd desc
+        document.getElementById("cmd-desc").innerHTML =
+          `Prefix default: <code style="font-family:'DM Mono',monospace;color:var(--green);font-size:0.85em">${C.PREFIX}</code>`;
 
-      // Buy command
-      document.getElementById("buy-cmd").textContent =
-        `${C.PREFIX}premium beli`;
+        // Buy command
+        document.getElementById("buy-cmd").textContent =
+          `${C.PREFIX}premium beli`;
 
-      // Contact
-      const contactEl = document.getElementById("contact-link");
-      contactEl.href = C.CONFIRM_CONTACT;
-      contactEl.textContent = `📩 ${C.CONFIRM_CONTACT_LABEL}`;
+        // Contact
+        const contactEl = document.getElementById("contact-link");
+        contactEl.href = C.CONFIRM_CONTACT;
+        contactEl.textContent = `📩 ${C.CONFIRM_CONTACT_LABEL}`;
 
-      // Footer
-      document.getElementById("footer-logo").textContent =
-        C.BOT_NAME.toUpperCase();
-      document.getElementById("footer-copy").textContent =
-        `© ${new Date().getFullYear()} ${C.BOT_NAME} — Bot Musik Discord`;
-      document.getElementById("footer-support").href = C.SUPPORT_URL;
-      document.getElementById("footer-vote").href = C.TOPGG_URL;
-      document.getElementById("footer-kofi").href = C.KOFI_URL;
+        // Footer
+        document.getElementById("footer-logo").textContent =
+          C.BOT_NAME.toUpperCase();
+        document.getElementById("footer-copy").textContent =
+          `© ${new Date().getFullYear()} ${C.BOT_NAME} — Bot Musik Discord`;
+        document.getElementById("footer-support").href = C.SUPPORT_URL;
+        document.getElementById("footer-vote").href = C.TOPGG_URL;
+        document.getElementById("footer-kofi").href = C.KOFI_URL;
 
-      // Free queue limit stat
-      document.querySelector(".stat-num-free").textContent = C.FREE_QUEUE_LIMIT;
+        // Free queue limit stat
+        document.querySelector(".stat-num-free").textContent =
+          C.FREE_QUEUE_LIMIT;
 
-      // Premium cmd hint
-      document.getElementById("premium-price-hint").innerHTML =
-        `Ketik <code style="font-family:'DM Mono',monospace;font-size:0.85em">${C.PREFIX}premium beli</code> di bot`;
+        // Premium cmd hint
+        document.getElementById("premium-price-hint").innerHTML =
+          `Ketik <code style="font-family:'DM Mono',monospace;font-size:0.85em">${C.PREFIX}premium beli</code> di bot`;
 
-      // ── Render premium features ──────────────────────────────────────────────
-      const FEATURE_COMPARE = [
-        {
-          label: `Queue hingga ${C.FREE_QUEUE_LIMIT} lagu`,
-          free: true,
-          premium: false,
-        },
-        { label: "Queue Unlimited", free: false, premium: true },
-        { label: "Volume hingga 100%", free: true, premium: false },
-        { label: "Volume hingga 200%", free: false, premium: true },
-        { label: "YouTube & Spotify", free: true, premium: true },
-        { label: "Audio Filters", free: false, premium: true },
-        { label: `Command ${C.PREFIX}seek`, free: false, premium: true },
-        { label: "AutoPlay", free: true, premium: true },
-        { label: "Bot tetap 1 menit di VC", free: false, premium: true },
-      ];
+        // ── Render premium features ──────────────────────────────────────────────
+        const FEATURE_COMPARE = [
+          {
+            label: `Queue hingga ${C.FREE_QUEUE_LIMIT} lagu`,
+            free: true,
+            premium: false,
+          },
+          { label: "Queue Unlimited", free: false, premium: true },
+          { label: "Volume hingga 100%", free: true, premium: false },
+          { label: "Volume hingga 200%", free: false, premium: true },
+          { label: "YouTube & Spotify", free: true, premium: true },
+          { label: "Audio Filters", free: false, premium: true },
+          { label: `Command ${C.PREFIX}seek`, free: false, premium: true },
+          { label: "AutoPlay", free: true, premium: true },
+          { label: "Bot tetap 1 menit di VC", free: false, premium: true },
+        ];
 
-      const renderFeatureList = (id, type) => {
-        const el = document.getElementById(id);
-        FEATURE_COMPARE.forEach((f) => {
-          const has = f[type];
-          const li = document.createElement("li");
-          if (!has) li.classList.add("locked");
-          li.innerHTML = `
+        const renderFeatureList = (id, type) => {
+          const el = document.getElementById(id);
+          FEATURE_COMPARE.forEach((f) => {
+            const has = f[type];
+            const li = document.createElement("li");
+            if (!has) li.classList.add("locked");
+            li.innerHTML = `
         <span class="check ${has ? "yes" : "no"}">${has ? "✓" : "×"}</span>
         ${f.label}
       `;
-          el.appendChild(li);
-        });
-      };
+            el.appendChild(li);
+          });
+        };
 
-      renderFeatureList("free-features", "free");
-      renderFeatureList("premium-features", "premium");
+        renderFeatureList("free-features", "free");
+        renderFeatureList("premium-features", "premium");
 
-      // ── Render feature cards ─────────────────────────────────────────────────
-      const grid = document.getElementById("features-grid");
-      C.PREMIUM_FEATURES.forEach((f) => {
-        const card = document.createElement("div");
-        card.className = "feature-card";
-        card.innerHTML = `
+        // ── Render feature cards ─────────────────────────────────────────────────
+        const grid = document.getElementById("features-grid");
+        C.PREMIUM_FEATURES.forEach((f) => {
+          const card = document.createElement("div");
+          card.className = "feature-card";
+          card.innerHTML = `
       <span class="feature-icon">${f.icon}</span>
       <div class="feature-name">${f.label}</div>
       <div class="feature-desc">${f.desc}</div>
     `;
-        grid.appendChild(card);
-      });
+          grid.appendChild(card);
+        });
 
-      // ── Render commands ──────────────────────────────────────────────────────
-      const COMMANDS = [
-        { name: "play <url/nama>", desc: "Putar dari YouTube / Spotify" },
-        { name: "pause", desc: "Jeda lagu" },
-        { name: "resume", desc: "Lanjutkan lagu" },
-        { name: "skip", desc: "Lewati lagu" },
-        { name: "skipto <no>", desc: "Loncat ke nomor antrian" },
-        { name: "stop", desc: "Hentikan & bersihkan queue" },
-        { name: "queue", desc: "Lihat antrian lagu" },
-        { name: "np", desc: "Info lagu saat ini" },
-        { name: "loop [none|track|queue]", desc: "Toggle mode loop" },
-        { name: "shuffle", desc: "Acak urutan queue" },
-        { name: "autoplay", desc: "Toggle autoplay otomatis" },
-        { name: "volume <1-200>", desc: "Atur volume (200% = premium)" },
-        { name: "seek <m:ss>", desc: "Loncat ke timestamp ⭐" },
-        { name: "remove <no>", desc: "Hapus lagu dari queue" },
-        { name: "lirik", desc: "Tampilkan lirik lagu" },
-        { name: "help", desc: "Tampilkan semua command" },
-        { name: "premium", desc: "Cek status premium" },
-        { name: "premium beli", desc: "Beli / perpanjang premium" },
-      ];
+        // ── Render commands ──────────────────────────────────────────────────────
+        const COMMANDS = [
+          { name: "play <url/nama>", desc: "Putar dari YouTube / Spotify" },
+          { name: "pause", desc: "Jeda lagu" },
+          { name: "resume", desc: "Lanjutkan lagu" },
+          { name: "skip", desc: "Lewati lagu" },
+          { name: "skipto <no>", desc: "Loncat ke nomor antrian" },
+          { name: "stop", desc: "Hentikan & bersihkan queue" },
+          { name: "queue", desc: "Lihat antrian lagu" },
+          { name: "np", desc: "Info lagu saat ini" },
+          { name: "loop [none|track|queue]", desc: "Toggle mode loop" },
+          { name: "shuffle", desc: "Acak urutan queue" },
+          { name: "autoplay", desc: "Toggle autoplay otomatis" },
+          { name: "volume <1-200>", desc: "Atur volume (200% = premium)" },
+          { name: "seek <m:ss>", desc: "Loncat ke timestamp ⭐" },
+          { name: "remove <no>", desc: "Hapus lagu dari queue" },
+          { name: "lirik", desc: "Tampilkan lirik lagu" },
+          { name: "help", desc: "Tampilkan semua command" },
+          { name: "premium", desc: "Cek status premium" },
+          { name: "premium beli", desc: "Beli / perpanjang premium" },
+        ];
 
-      const cmdGrid = document.getElementById("commands-grid");
-      COMMANDS.forEach((cmd) => {
-        const el = document.createElement("div");
-        el.className = "cmd";
-        el.innerHTML = `
+        const cmdGrid = document.getElementById("commands-grid");
+        COMMANDS.forEach((cmd) => {
+          const el = document.createElement("div");
+          el.className = "cmd";
+          el.innerHTML = `
       <span class="cmd-name">${C.PREFIX}${cmd.name}</span>
       <span class="cmd-desc">— ${cmd.desc}</span>
     `;
-        cmdGrid.appendChild(el);
-      });
+          cmdGrid.appendChild(el);
+        });
 
-      // ── Render links ─────────────────────────────────────────────────────────
-      const LINKS = [
-        { label: "Bot #1 — Invite", icon: "🤖", href: C.BOT_1_INVITE },
-        { label: "Bot #2 — Invite", icon: "🤖", href: C.BOT_2_INVITE },
-        { label: "Vote di Top.gg", icon: "⭐", href: C.TOPGG_URL },
-        { label: "Support Ko-fi", icon: "☕", href: C.KOFI_URL },
-        { label: "Server Support", icon: "💬", href: C.SUPPORT_URL },
-        { label: C.CONFIRM_CONTACT_LABEL, icon: "📩", href: C.CONFIRM_CONTACT },
-      ];
+        // ── Render links ─────────────────────────────────────────────────────────
+        const LINKS = [
+          { label: "Bot #1 — Invite", icon: "🤖", href: C.BOT_1_INVITE },
+          { label: "Bot #2 — Invite", icon: "🤖", href: C.BOT_2_INVITE },
+          { label: "Vote di Top.gg", icon: "⭐", href: C.TOPGG_URL },
+          { label: "Support Ko-fi", icon: "☕", href: C.KOFI_URL },
+          { label: "Server Support", icon: "💬", href: C.SUPPORT_URL },
+          {
+            label: C.CONFIRM_CONTACT_LABEL,
+            icon: "📩",
+            href: C.CONFIRM_CONTACT,
+          },
+        ];
 
-      const linksGrid = document.getElementById("links-grid");
-      LINKS.forEach((l) => {
-        const a = document.createElement("a");
-        a.className = "link-card";
-        a.href = l.href;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.innerHTML = `
+        const linksGrid = document.getElementById("links-grid");
+        LINKS.forEach((l) => {
+          const a = document.createElement("a");
+          a.className = "link-card";
+          a.href = l.href;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML = `
       <span class="link-card-icon">${l.icon}</span>
       ${l.label}
       <span class="link-card-arrow">→</span>
     `;
-        linksGrid.appendChild(a);
-      });
-
-      // ── Invite anchor helper ─────────────────────────────────────────────────
-      document.getElementById("invite").scrollIntoView;
-      const inviteBtn = document.querySelector(".invite-wrapper");
-      document.querySelectorAll('a[href="#invite"]').forEach((a) => {
-        a.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.getElementById("bot1-link").click();
+          linksGrid.appendChild(a);
         });
-      });
 
-      // ── Scroll reveal ─────────────────────────────────────────────────────────
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => entry.target.classList.add("visible"), i * 80);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
+        // ── Invite anchor helper ─────────────────────────────────────────────────
+        // Nav "Invite Bot" → buka bot1 langsung
+        document.getElementById("nav-invite").addEventListener("click", (e) => {
+          e.preventDefault();
+          window.open(C.BOT_1_INVITE, "_blank");
+        });
 
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
+        // ── Scroll reveal ─────────────────────────────────────────────────────────
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, i) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add("visible"), i * 80);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => observer.observe(el));
+      }); // end DOMContentLoaded
     </script>
   </body>
 </html>
