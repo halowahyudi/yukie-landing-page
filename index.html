@@ -3,15 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>iramaX — Bot Musik Discord</title>
+
+    <!-- Primary SEO -->
+    <title>iramaX — Bot Musik Discord | Spotify & YouTube, Gratis</title>
     <meta
       name="description"
-      content="Bot musik Discord dengan integrasi Spotify & YouTube. Queue unlimited, audio filters, dan fitur premium."
+      content="iramaX adalah bot musik Discord gratis dengan integrasi Spotify & YouTube. Queue unlimited, audio filters (bassboost, nightcore, 8D), autoplay, dan premium terjangkau. Invite sekarang!"
     />
+    <meta
+      name="keywords"
+      content="bot musik discord, discord music bot, iramaX, bot spotify discord, bot youtube discord, bot discord indonesia, queue unlimited, audio filter discord, bassboost discord"
+    />
+    <meta name="author" content="iramaX" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://iramax.my.id/" />
+    <meta name="theme-color" content="#c0181e" />
 
-    <!-- ════════════════════════════════════════════
-       EDIT SEMUA KONFIGURASI DI SINI
-       ════════════════════════════════════════════ -->
+    <!-- Open Graph (Discord embed, WhatsApp, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://iramax.my.id/" />
+    <meta
+      property="og:title"
+      content="iramaX — Bot Musik Discord | Spotify & YouTube"
+    />
+    <meta
+      property="og:description"
+      content="Putar musik dari Spotify & YouTube langsung di server Discord kamu. Gratis, cepat, queue unlimited, audio filters. Invite iramaX sekarang!"
+    />
+    <meta property="og:image" content="https://iramax.my.id/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="iramaX Bot Musik Discord" />
+    <meta property="og:site_name" content="iramaX" />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="iramaX — Bot Musik Discord | Spotify & YouTube"
+    />
+    <meta
+      name="twitter:description"
+      content="Putar musik dari Spotify & YouTube di Discord. Gratis, queue unlimited, audio filters. Invite sekarang!"
+    />
+    <meta name="twitter:image" content="https://iramax.my.id/og-image.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "iramaX",
+        "applicationCategory": "MusicApplication",
+        "operatingSystem": "Discord",
+        "description": "Bot musik Discord gratis dengan integrasi Spotify dan YouTube. Fitur audio filters, queue unlimited, autoplay, dan premium.",
+        "url": "https://iramax.my.id/",
+        "inLanguage": "id",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "IDR",
+            "name": "Gratis"
+          },
+          {
+            "@type": "Offer",
+            "name": "Premium",
+            "description": "Queue unlimited, audio filters, autoplay, seek, volume 200%"
+          }
+        ],
+        "featureList": [
+          "Putar musik dari YouTube dan Spotify",
+          "Queue hingga 50 lagu gratis",
+          "Queue unlimited premium",
+          "Audio filters bassboost nightcore 8D vaporwave",
+          "Volume hingga 200%",
+          "AutoPlay otomatis",
+          "Command seek ke timestamp"
+        ]
+      }
+    </script>
+
     <script>
       const CONFIG = {
         BOT_NAME: "iramaX",
@@ -20,7 +93,6 @@
           "Putar musik dari Spotify & YouTube langsung di server Discord kamu. Gratis, cepat, dan penuh fitur.",
         PREFIX: "x!",
 
-        // ── Invite links ──────────────────────────────
         BOT_1_INVITE:
           "https://discord.com/oauth2/authorize?client_id=1387030307710042263",
         BOT_2_INVITE:
@@ -28,19 +100,16 @@
         BOT_3_INVITE:
           "https://discord.com/oauth2/authorize?client_id=1479536896630853632",
 
-        // ── Social links ──────────────────────────────
         TOPGG_URL: "https://top.gg/bot/1387030307710042263/vote",
         KOFI_URL: "https://ko-fi.com/halowahyudi",
         SUPPORT_URL: "https://discord.gg/hakKEyVUwJ",
         CONFIRM_CONTACT: "https://discord.com/users/399598975075876865",
         CONFIRM_CONTACT_LABEL: "DM Discord",
 
-        // ── Stats ─────────────────────────────────────
         BOT_COUNT: 3,
         PLATFORM_COUNT: 4,
         FREE_QUEUE_LIMIT: 50,
 
-        // ── Fitur premium cards ───────────────────────
         PREMIUM_FEATURES: [
           {
             icon: "∞",
@@ -74,7 +143,6 @@
           },
         ],
 
-        // ── Command list ──────────────────────────────
         COMMANDS: [
           { name: "play <url/nama>", desc: "Putar dari YouTube / Spotify" },
           { name: "pause", desc: "Jeda lagu" },
@@ -96,7 +164,6 @@
           { name: "premium", desc: "Cek & beli premium" },
         ],
 
-        // ── Free vs Premium comparison ────────────────
         FEATURE_COMPARE: [
           {
             label: "Queue hingga {FREE_QUEUE_LIMIT} lagu",
@@ -120,9 +187,6 @@
     </style>
 
     <style>
-      /* ══════════════════════════════════════════════════
-     TOKENS
-  ══════════════════════════════════════════════════ */
       :root {
         --bg: #080608;
         --bg2: #0e0b0e;
@@ -162,7 +226,6 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      /* ── Grain overlay ── */
       body::before {
         content: "";
         position: fixed;
@@ -252,10 +315,9 @@
         text-align: center;
         padding: 48px 24px 60px;
         position: relative;
-        overflow: hidden;
+        overflow: visible; /* changed from hidden so dropdown doesn't clip */
       }
 
-      /* Radial glow via pseudo-element — tidak affect layout */
       .hero::before {
         content: "";
         position: absolute;
@@ -352,6 +414,8 @@
         flex-wrap: wrap;
         justify-content: center;
         animation: fadeUp 0.6s 0.24s ease forwards;
+        position: relative;
+        z-index: 500; /* above stats bar */
       }
 
       /* ── BUTTONS ── */
@@ -399,27 +463,37 @@
         border-color: rgba(255, 255, 255, 0.2);
       }
 
-      /* Invite dropdown */
+      /* ── Invite dropdown ── */
       .invite-wrap {
         position: relative;
       }
+
       .invite-drop {
         position: absolute;
-        top: calc(100% + 8px);
+        top: calc(100% + 10px);
         left: 0;
         background: var(--bg3);
         border: 1px solid var(--border);
         border-radius: 12px;
         min-width: 230px;
-        display: none;
-        z-index: 80;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        z-index: 9999; /* very high so it renders above everything */
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
         overflow: hidden;
+        /* click-based toggle */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-6px);
+        transition:
+          opacity 0.18s ease,
+          transform 0.18s ease;
       }
-      .invite-wrap:hover .invite-drop,
-      .invite-wrap:focus-within .invite-drop {
-        display: block;
+
+      .invite-drop.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
       }
+
       .invite-drop a {
         display: flex;
         align-items: center;
@@ -455,6 +529,12 @@
         justify-content: center;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
+        position: relative;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .stats-bar .stat-item {
+        pointer-events: auto;
       }
       .stat-item {
         flex: 1;
@@ -935,7 +1015,7 @@
   </head>
   <body>
     <!-- ══════════════════ NAV ══════════════════ -->
-    <nav>
+    <nav aria-label="Navigasi Utama">
       <a class="nav-logo" href="#" id="nav-logo">irama<span>X</span></a>
       <ul class="nav-links">
         <li><a href="#fitur">Fitur</a></li>
@@ -947,160 +1027,167 @@
     </nav>
 
     <!-- ══════════════════ HERO ══════════════════ -->
-    <section class="hero" id="home">
-      <div class="hero-pill" style="opacity: 1">
-        <span class="hero-pill-dot"></span>
-        <span id="hero-pill-text">BOT ONLINE</span>
-      </div>
+    <main>
+      <section class="hero" id="home" aria-label="Halaman Utama">
+        <div class="hero-pill" style="opacity: 1">
+          <span class="hero-pill-dot"></span>
+          <span id="hero-pill-text">BOT ONLINE</span>
+        </div>
 
-      <h1 class="hero-title" id="hero-title" style="opacity: 1">
-        irama<span class="accent">X</span
-        ><span class="sub-word" id="hero-tagline">Bot Musik Discord</span>
-      </h1>
+        <h1 class="hero-title" id="hero-title" style="opacity: 1">
+          irama<span class="accent">X</span
+          ><span class="sub-word" id="hero-tagline">Bot Musik Discord</span>
+        </h1>
 
-      <p class="hero-desc" id="hero-desc" style="opacity: 1"></p>
+        <p class="hero-desc" id="hero-desc" style="opacity: 1"></p>
 
-      <div class="hero-actions" style="opacity: 1">
-        <div class="invite-wrap">
-          <button class="btn btn-red">
-            ＋ Invite ke Server
-            <span style="opacity: 0.6; font-size: 0.7em">▾</span>
-          </button>
-          <div class="invite-drop" id="invite-drop">
-            <a id="bot1-link" href="#" target="_blank" rel="noopener"
-              >🎵 Bot #1 <span class="badge">BOT 1</span></a
+        <div class="hero-actions" style="opacity: 1">
+          <div class="invite-wrap">
+            <button
+              class="btn btn-red"
+              id="invite-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="Pilih bot untuk diundang"
             >
-            <a id="bot2-link" href="#" target="_blank" rel="noopener"
-              >🎵 Bot #2 <span class="badge">BOT 2</span></a
-            >
-            <a id="bot3-link" href="#" target="_blank" rel="noopener"
-              >🎵 Bot #3 <span class="badge">BOT 3</span></a
-            >
-          </div>
-        </div>
-        <a href="#fitur" class="btn btn-ghost">Lihat Fitur ↓</a>
-        <a id="support-btn" href="#" class="btn btn-outline">💬 Support</a>
-      </div>
-    </section>
-
-    <!-- ══════════════════ STATS ══════════════════ -->
-    <div class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-val" id="stat-bots">3</div>
-        <div class="stat-label">Bot Instance</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val" id="stat-platforms">4</div>
-        <div class="stat-label">Platform Musik</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val" id="stat-free">50</div>
-        <div class="stat-label">Lagu Free Queue</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">∞</div>
-        <div class="stat-label">Queue Premium</div>
-      </div>
-    </div>
-
-    <!-- ══════════════════ FITUR ══════════════════ -->
-    <section id="fitur">
-      <div class="wrap">
-        <div class="reveal">
-          <p class="sec-eyebrow">Fitur Premium</p>
-          <h2 class="sec-title">SEMUA YANG<br />KAMU BUTUHKAN</h2>
-          <p class="sec-desc">
-            Upgrade ke Premium untuk membuka semua fitur tanpa batas.
-          </p>
-        </div>
-        <div class="features-grid reveal" id="features-grid"></div>
-      </div>
-    </section>
-
-    <!-- ══════════════════ COMMANDS ══════════════════ -->
-    <section id="command">
-      <div class="wrap">
-        <div class="reveal">
-          <p class="sec-eyebrow">Commands</p>
-          <h2 class="sec-title">SEMUA<br />COMMAND</h2>
-          <p class="sec-desc" id="cmd-prefix-desc"></p>
-        </div>
-        <div class="cmd-grid reveal" id="cmd-grid"></div>
-      </div>
-    </section>
-
-    <!-- ══════════════════ PREMIUM ══════════════════ -->
-    <section id="premium">
-      <div class="wrap">
-        <div class="reveal">
-          <p class="sec-eyebrow">Pricing</p>
-          <h2 class="sec-title">FREE VS<br />PREMIUM</h2>
-          <p class="sec-desc">Dua tipe premium — pilih sesuai kebutuhanmu.</p>
-        </div>
-
-        <div class="plan-types reveal">
-          <div class="type-box">
-            <div class="type-ico">👤</div>
-            <div class="type-name">User Premium</div>
-            <div class="type-desc">
-              Melekat ke akun Discord kamu. Berlaku di server manapun.
+              ＋ Invite ke Server
+              <span style="opacity: 0.6; font-size: 0.7em">▾</span>
+            </button>
+            <div class="invite-drop" id="invite-drop">
+              <a id="bot1-link" href="#" target="_blank" rel="noopener"
+                >🎵 Bot #1 <span class="badge">BOT 1</span></a
+              >
+              <a id="bot2-link" href="#" target="_blank" rel="noopener"
+                >🎵 Bot #2 <span class="badge">BOT 2</span></a
+              >
+              <a id="bot3-link" href="#" target="_blank" rel="noopener"
+                >🎵 Bot #3 <span class="badge">BOT 3</span></a
+              >
             </div>
           </div>
-          <div class="type-box">
-            <div class="type-ico">🏠</div>
-            <div class="type-name">Server Premium</div>
-            <div class="type-desc">
-              Melekat ke server. Semua member bisa menikmati premium.
+          <a href="#fitur" class="btn btn-ghost">Lihat Fitur ↓</a>
+          <a id="support-btn" href="#" class="btn btn-outline">💬 Support</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════ STATS ══════════════════ -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-val" id="stat-bots">3</div>
+          <div class="stat-label">Bot Instance</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-platforms">4</div>
+          <div class="stat-label">Platform Musik</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-free">50</div>
+          <div class="stat-label">Lagu Free Queue</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">∞</div>
+          <div class="stat-label">Queue Premium</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ FITUR ══════════════════ -->
+      <section id="fitur" aria-label="Fitur Premium">
+        <div class="wrap">
+          <div class="reveal">
+            <p class="sec-eyebrow">Fitur Premium</p>
+            <h2 class="sec-title">SEMUA YANG<br />KAMU BUTUHKAN</h2>
+            <p class="sec-desc">
+              Upgrade ke Premium untuk membuka semua fitur tanpa batas.
+            </p>
+          </div>
+          <div class="features-grid reveal" id="features-grid"></div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ COMMANDS ══════════════════ -->
+      <section id="command" aria-label="Daftar Command">
+        <div class="wrap">
+          <div class="reveal">
+            <p class="sec-eyebrow">Commands</p>
+            <h2 class="sec-title">SEMUA<br />COMMAND</h2>
+            <p class="sec-desc" id="cmd-prefix-desc"></p>
+          </div>
+          <div class="cmd-grid reveal" id="cmd-grid"></div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ PREMIUM ══════════════════ -->
+      <section id="premium" aria-label="Harga dan Premium">
+        <div class="wrap">
+          <div class="reveal">
+            <p class="sec-eyebrow">Pricing</p>
+            <h2 class="sec-title">FREE VS<br />PREMIUM</h2>
+            <p class="sec-desc">Dua tipe premium — pilih sesuai kebutuhanmu.</p>
+          </div>
+
+          <div class="plan-types reveal">
+            <div class="type-box">
+              <div class="type-ico">👤</div>
+              <div class="type-name">User Premium</div>
+              <div class="type-desc">
+                Melekat ke akun Discord kamu. Berlaku di server manapun.
+              </div>
+            </div>
+            <div class="type-box">
+              <div class="type-ico">🏠</div>
+              <div class="type-name">Server Premium</div>
+              <div class="type-desc">
+                Melekat ke server. Semua member bisa menikmati premium.
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="plan-grid reveal">
-          <div class="plan-box">
-            <span class="plan-tag free">Gratis</span>
-            <div class="plan-name">FREE</div>
-            <div class="plan-sub">Selamanya gratis</div>
-            <ul class="plan-list" id="free-list"></ul>
+          <div class="plan-grid reveal">
+            <div class="plan-box">
+              <span class="plan-tag free">Gratis</span>
+              <div class="plan-name">FREE</div>
+              <div class="plan-sub">Selamanya gratis</div>
+              <ul class="plan-list" id="free-list"></ul>
+            </div>
+            <div class="plan-box gold">
+              <span class="plan-tag gold">⭐ Premium</span>
+              <div class="plan-name" style="color: var(--gold)">PREMIUM</div>
+              <div class="plan-sub" id="plan-buy-hint"></div>
+              <ul class="plan-list" id="premium-list"></ul>
+            </div>
           </div>
-          <div class="plan-box gold">
-            <span class="plan-tag gold">⭐ Premium</span>
-            <div class="plan-name" style="color: var(--gold)">PREMIUM</div>
-            <div class="plan-sub" id="plan-buy-hint"></div>
-            <ul class="plan-list" id="premium-list"></ul>
+
+          <div class="buy-banner reveal">
+            <div class="buy-text">
+              <strong>💳 Cara Beli Premium</strong>
+              Ketik <code id="buy-cmd-code"></code> di bot → pilih paket → pilih
+              metode bayar (QRIS atau Transfer Bank).
+            </div>
+            <a
+              id="contact-btn"
+              href="#"
+              class="btn btn-ghost"
+              style="margin-left: auto; flex-shrink: 0"
+              >📩 Hubungi Admin</a
+            >
           </div>
         </div>
+      </section>
 
-        <div class="buy-banner reveal">
-          <div class="buy-text">
-            <strong>💳 Cara Beli Premium</strong>
-            Ketik <code id="buy-cmd-code"></code> di bot → pilih paket → pilih
-            metode bayar (QRIS atau Transfer Bank).
+      <!-- ══════════════════ LINKS ══════════════════ -->
+      <section id="links" aria-label="Link dan Dukungan">
+        <div class="wrap">
+          <div class="reveal">
+            <p class="sec-eyebrow">Links</p>
+            <h2 class="sec-title">DUKUNG<br />BOT INI</h2>
+            <p class="sec-desc">
+              Vote harian & support Ko-fi membantu bot ini terus hidup.
+            </p>
           </div>
-          <a
-            id="contact-btn"
-            href="#"
-            class="btn btn-ghost"
-            style="margin-left: auto; flex-shrink: 0"
-            >📩 Hubungi Admin</a
-          >
+          <div class="links-grid reveal" id="links-grid"></div>
         </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════ LINKS ══════════════════ -->
-    <section id="links">
-      <div class="wrap">
-        <div class="reveal">
-          <p class="sec-eyebrow">Links</p>
-          <h2 class="sec-title">DUKUNG<br />BOT INI</h2>
-          <p class="sec-desc">
-            Vote harian & support Ko-fi membantu bot ini terus hidup.
-          </p>
-        </div>
-        <div class="links-grid reveal" id="links-grid"></div>
-      </div>
-    </section>
-
+      </section>
+    </main>
     <!-- ══════════════════ FOOTER ══════════════════ -->
     <footer>
       <span class="footer-logo" id="footer-logo">irama<span>X</span></span>
@@ -1153,6 +1240,36 @@
         document.getElementById("nav-invite").addEventListener("click", (e) => {
           e.preventDefault();
           window.open(C.BOT_1_INVITE, "_blank");
+        });
+
+        // ── Invite dropdown — click toggle ─────────────────────────────────
+        const inviteBtn = document.getElementById("invite-btn");
+        const inviteDrop = document.getElementById("invite-drop");
+
+        inviteBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isOpen = inviteDrop.classList.toggle("open");
+          inviteBtn.setAttribute("aria-expanded", isOpen);
+        });
+
+        // Links: let them open naturally, just close dropdown after
+        inviteDrop.querySelectorAll("a").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            e.stopPropagation(); // prevent document click from interfering
+            inviteDrop.classList.remove("open");
+            // open the href manually so it's not blocked
+            const href = a.getAttribute("href");
+            if (href && href !== "#") {
+              window.open(href, "_blank", "noopener,noreferrer");
+              e.preventDefault();
+            }
+          });
+        });
+
+        // Close when clicking anywhere else on page
+        document.addEventListener("click", () => {
+          inviteDrop.classList.remove("open");
+          inviteBtn.setAttribute("aria-expanded", "false");
         });
 
         // ── Feature cards ──────────────────────────────────────────────────
